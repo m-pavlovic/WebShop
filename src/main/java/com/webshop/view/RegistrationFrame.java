@@ -32,11 +32,11 @@ public class RegistrationFrame extends JFrame {
     
     private void initComponents() {
         // Create form components
-        usernameField = new JTextField(20);
-        passwordField = new JPasswordField(20);
-        confirmPasswordField = new JPasswordField(20);
-        emailField = new JTextField(20);
-        fullNameField = new JTextField(20);
+        usernameField = new JTextField(22);
+        passwordField = new JPasswordField(22);
+        confirmPasswordField = new JPasswordField(22);
+        emailField = new JTextField(22);
+        fullNameField = new JTextField(22);
         registerButton = new JButton("Create Account");
         cancelButton = new JButton("Cancel");
         
@@ -46,7 +46,7 @@ public class RegistrationFrame extends JFrame {
         
         // Set button colors
         registerButton.setBackground(new Color(34, 139, 34));
-        registerButton.setForeground(Color.WHITE);
+        registerButton.setForeground(Color.BLACK);
         cancelButton.setBackground(new Color(220, 220, 220));
     }
     
@@ -68,31 +68,41 @@ public class RegistrationFrame extends JFrame {
         
         // Username
         gbc.gridx = 0; gbc.gridy = 0;
-        formPanel.add(new JLabel("Username *:"), gbc);
+        JLabel usernameLabel = new JLabel("Username *:");
+        usernameLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        formPanel.add(usernameLabel, gbc);
         gbc.gridx = 1;
         formPanel.add(usernameField, gbc);
         
         // Full Name
         gbc.gridx = 0; gbc.gridy = 1;
-        formPanel.add(new JLabel("Full Name *:"), gbc);
+        JLabel fullNameLabel = new JLabel("Full Name *:");
+        fullNameLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        formPanel.add(fullNameLabel, gbc);
         gbc.gridx = 1;
         formPanel.add(fullNameField, gbc);
         
         // Email
         gbc.gridx = 0; gbc.gridy = 2;
-        formPanel.add(new JLabel("Email *:"), gbc);
+        JLabel emailLabel = new JLabel("Email *:");
+        emailLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        formPanel.add(emailLabel, gbc);
         gbc.gridx = 1;
         formPanel.add(emailField, gbc);
         
         // Password
         gbc.gridx = 0; gbc.gridy = 3;
-        formPanel.add(new JLabel("Password *:"), gbc);
+        JLabel passwordLabel = new JLabel("Password *:");
+        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        formPanel.add(passwordLabel, gbc);
         gbc.gridx = 1;
         formPanel.add(passwordField, gbc);
         
         // Confirm Password
         gbc.gridx = 0; gbc.gridy = 4;
-        formPanel.add(new JLabel("Confirm Password *:"), gbc);
+        JLabel confirmPasswordLabel = new JLabel("Confirm Password *:");
+        confirmPasswordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        formPanel.add(confirmPasswordLabel, gbc);
         gbc.gridx = 1;
         formPanel.add(confirmPasswordField, gbc);
         

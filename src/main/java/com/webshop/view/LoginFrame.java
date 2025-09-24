@@ -18,7 +18,7 @@ public class LoginFrame extends JFrame {
     public LoginFrame() {
         setTitle("WebShop - Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(600, 400);
         setLocationRelativeTo(null);
         setResizable(false);
         
@@ -28,24 +28,32 @@ public class LoginFrame extends JFrame {
     }
     
     private void initComponents() {
-        // Create form components
-        usernameField = new JTextField(20);
-        passwordField = new JPasswordField(20);
+        usernameField = new JTextField(22);
+        passwordField = new JPasswordField(22);
         loginButton = new JButton("Login");
         registerButton = new JButton("Register");
         
-        // Style buttons
-        loginButton.setPreferredSize(new Dimension(120, 30));
-        registerButton.setPreferredSize(new Dimension(120, 30));
+
+        loginButton.setPreferredSize(new Dimension(130, 50));
+        loginButton.setBackground(new Color(30, 144, 225));
+        loginButton.setForeground(Color.BLACK);
+        loginButton.setFont(new Font("Arial", Font.BOLD, 14));
+        
+        
+        registerButton.setPreferredSize(new Dimension(130, 50));
+        registerButton.setBackground(new Color(30, 144, 255));
+        registerButton.setForeground(Color.BLACK);
+        registerButton.setFont(new Font("Arial", Font.BOLD, 14));
     }
     
     private void layoutComponents() {
         setLayout(new BorderLayout());
         
-        // Title panel
         JPanel titlePanel = new JPanel();
-        titlePanel.add(new JLabel("Welcome to WebShop"));
-        titlePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        JLabel titleLabel = new JLabel("Welcome to WebShop");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titlePanel.add(titleLabel);
+        titlePanel.setBorder(BorderFactory.createEmptyBorder(40, 0, 20, 0));
         
         // Form panel
         JPanel formPanel = new JPanel(new GridBagLayout());
@@ -54,13 +62,17 @@ public class LoginFrame extends JFrame {
         
         // Username
         gbc.gridx = 0; gbc.gridy = 0; gbc.anchor = GridBagConstraints.EAST;
-        formPanel.add(new JLabel("Username:"), gbc);
+        JLabel usernameLabel = new JLabel("Username:");
+        usernameLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        formPanel.add(usernameLabel, gbc);
         gbc.gridx = 1; gbc.anchor = GridBagConstraints.WEST;
         formPanel.add(usernameField, gbc);
         
         // Password
         gbc.gridx = 0; gbc.gridy = 1; gbc.anchor = GridBagConstraints.EAST;
-        formPanel.add(new JLabel("Password:"), gbc);
+        JLabel passwordLabel = new JLabel("Password:");
+        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        formPanel.add(passwordLabel, gbc);
         gbc.gridx = 1; gbc.anchor = GridBagConstraints.WEST;
         formPanel.add(passwordField, gbc);
         
@@ -70,7 +82,7 @@ public class LoginFrame extends JFrame {
         buttonPanel.add(registerButton);
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
         
-        // Add to frame
+        
         add(titlePanel, BorderLayout.NORTH);
         add(formPanel, BorderLayout.CENTER);
         

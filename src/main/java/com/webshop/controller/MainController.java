@@ -57,8 +57,7 @@ public class MainController implements ToolBarListener {
         System.out.println("Navigation: HOME clicked");
         // Business logic for home navigation
         if (mainFrame != null) {
-            // mainFrame.showHomePanel();
-            showMessage("Navigating to HOME");
+            mainFrame.showHomePanel();
         }
     }
     
@@ -67,8 +66,7 @@ public class MainController implements ToolBarListener {
         System.out.println("Navigation: CART clicked");
         // Business logic for cart navigation
         if (mainFrame != null) {
-            // mainFrame.showCartPanel();
-            showMessage("Navigating to CART");
+            mainFrame.showCartPanel();
         }
     }
     
@@ -77,8 +75,7 @@ public class MainController implements ToolBarListener {
         System.out.println("Navigation: PROFILE clicked");
         // Business logic for profile navigation
         if (mainFrame != null) {
-            // mainFrame.showProfilePanel();
-            showMessage("Navigating to PROFILE");
+            mainFrame.showProfilePanel();
         }
     }
     
@@ -87,8 +84,7 @@ public class MainController implements ToolBarListener {
         System.out.println("Navigation: CONTACT clicked");
         // Business logic for contact navigation
         if (mainFrame != null) {
-            // mainFrame.showContactPanel();
-            showMessage("Navigating to CONTACT");
+            mainFrame.showContactPanel();
         }
     }
     

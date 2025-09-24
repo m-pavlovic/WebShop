@@ -1,9 +1,8 @@
 package com.webshop.view;
-import java.awt.BorderLayout;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JToolBar;
+import javax.swing.*;
+import static javax.swing.BorderFactory.createLineBorder;
 
 public class ToolBarPanel extends JPanel {
 
@@ -32,13 +31,55 @@ public class ToolBarPanel extends JPanel {
         toolBar.add(profileButton);
         toolBar.add(contactButton);
 
+        // Set the toolbar panel to fill available space
+        this.setPreferredSize(new Dimension(800, 60));
         this.add(toolBar);
-        
     }
 
     private void layoutComponents() {
         this.setLayout(new BorderLayout());
         this.add(toolBar, BorderLayout.NORTH);
+        toolBar.setFloatable(false);
+        
+        toolBar.setLayout(new GridLayout(1, 4, 5, 0));
+
+        // Set button properties
+        homeButton.setFocusable(false);
+        cartButton.setFocusable(false);
+        profileButton.setFocusable(false);
+        contactButton.setFocusable(false);
+        
+        homeButton.setBackground(new Color(135, 206, 250));
+        cartButton.setBackground(new Color(135, 206, 250));
+        profileButton.setBackground(new Color(135, 206, 250));
+        contactButton.setBackground(new Color(135, 206, 250));
+        
+
+        Color darkBlue = new Color(0, 0, 139);
+        homeButton.setBorder(createLineBorder(darkBlue, 2));
+        cartButton.setBorder(createLineBorder(darkBlue, 2));
+        profileButton.setBorder(createLineBorder(darkBlue, 2));
+        contactButton.setBorder(createLineBorder(darkBlue, 2));
+        
+        
+        Dimension buttonSize = new Dimension(150, 50);
+        homeButton.setPreferredSize(buttonSize);
+        cartButton.setPreferredSize(buttonSize);
+        profileButton.setPreferredSize(buttonSize);
+        contactButton.setPreferredSize(buttonSize);
+        
+    
+        Font buttonFont = new Font("Arial", Font.BOLD, 14);
+        homeButton.setFont(buttonFont);
+        cartButton.setFont(buttonFont);
+        profileButton.setFont(buttonFont);
+        contactButton.setFont(buttonFont);
+        
+        
+        homeButton.setOpaque(true);
+        cartButton.setOpaque(true);
+        profileButton.setOpaque(true);
+        contactButton.setOpaque(true);
     }
 
     private void activate() {

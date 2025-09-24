@@ -40,14 +40,28 @@ public class RegistrationFrame extends JFrame {
         registerButton = new JButton("Create Account");
         cancelButton = new JButton("Cancel");
         
-        // Style buttons
-        registerButton.setPreferredSize(new Dimension(130, 30));
-        cancelButton.setPreferredSize(new Dimension(100, 30));
+        // Match ToolBarPanel styling
+        Color buttonBackground = new Color(135, 206, 250);  // Light Sky Blue
+        Color darkBlue = new Color(0, 0, 139);              // Dark Blue border
+        Font buttonFont = new Font("Arial", Font.BOLD, 14);
         
-        // Set button colors
-        registerButton.setBackground(new Color(34, 139, 34));
+        // Register button styling to match ToolBarPanel
+        registerButton.setPreferredSize(new Dimension(130, 50));
+        registerButton.setBackground(buttonBackground);
         registerButton.setForeground(Color.BLACK);
-        cancelButton.setBackground(new Color(220, 220, 220));
+        registerButton.setFont(buttonFont);
+        registerButton.setBorder(BorderFactory.createLineBorder(darkBlue, 2));
+        registerButton.setFocusable(false);
+        registerButton.setOpaque(true);
+        
+        // Cancel button styling to match ToolBarPanel (but slightly muted)
+        cancelButton.setPreferredSize(new Dimension(100, 50));
+        cancelButton.setBackground(new Color(220, 220, 220)); // Keep gray for cancel
+        cancelButton.setForeground(Color.BLACK);
+        cancelButton.setFont(buttonFont);
+        cancelButton.setBorder(BorderFactory.createLineBorder(darkBlue, 2));
+        cancelButton.setFocusable(false);
+        cancelButton.setOpaque(true);
     }
     
     private void layoutComponents() {

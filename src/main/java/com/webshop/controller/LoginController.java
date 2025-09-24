@@ -4,6 +4,7 @@ import com.webshop.view.LoginFrame;
 import com.webshop.view.LoginListener;
 import com.webshop.view.LoginEvent;
 import com.webshop.view.MainFrame;
+import com.webshop.view.HomePanel;
 import com.webshop.view.RegistrationFrame;
 import com.webshop.view.RegistrationListener;
 import com.webshop.view.RegistrationData;
@@ -102,6 +103,7 @@ public class LoginController implements LoginListener, RegistrationListener {
         // Set up main controller
         mainController = new MainController(mainFrame);
         mainFrame.getToolBarPanel().setToolBarListener(mainController);
+        mainFrame.getHomePanel().setHomePanelListener(mainController); // Wire up HomePanel events
         mainController.initialize();
         
         // Show main frame

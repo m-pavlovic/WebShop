@@ -33,17 +33,29 @@ public class LoginFrame extends JFrame {
         loginButton = new JButton("Login");
         registerButton = new JButton("Register");
         
+        
+        Color buttonBackground = new Color(135, 206, 250);  
+        Color darkBlue = new Color(0, 0, 139);             
+        Font buttonFont = new Font("Arial", Font.BOLD, 14);
+        Dimension buttonSize = new Dimension(130, 50);
 
-        loginButton.setPreferredSize(new Dimension(130, 50));
-        loginButton.setBackground(new Color(30, 144, 225));
+    
+        loginButton.setPreferredSize(buttonSize);
+        loginButton.setBackground(buttonBackground);
         loginButton.setForeground(Color.BLACK);
-        loginButton.setFont(new Font("Arial", Font.BOLD, 14));
+        loginButton.setFont(buttonFont);
+        loginButton.setBorder(BorderFactory.createLineBorder(darkBlue, 2));
+        loginButton.setFocusable(false);
+        loginButton.setOpaque(true);
         
         
-        registerButton.setPreferredSize(new Dimension(130, 50));
-        registerButton.setBackground(new Color(30, 144, 255));
+        registerButton.setPreferredSize(buttonSize);
+        registerButton.setBackground(buttonBackground);
         registerButton.setForeground(Color.BLACK);
-        registerButton.setFont(new Font("Arial", Font.BOLD, 14));
+        registerButton.setFont(buttonFont);
+        registerButton.setBorder(BorderFactory.createLineBorder(darkBlue, 2));
+        registerButton.setFocusable(false);
+        registerButton.setOpaque(true);
     }
     
     private void layoutComponents() {

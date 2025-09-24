@@ -61,6 +61,14 @@ public class MainFrame extends JFrame {
     }
     
     /**
+     * Gets the home panel for setting up listeners
+     * @return The HomePanel instance
+     */
+    public HomePanel getHomePanel() {
+        return homePanel;
+    }
+    
+    /**
      * Gets the content panel for updating main content
      * @return The main content panel
      */

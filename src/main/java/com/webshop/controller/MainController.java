@@ -3,12 +3,14 @@ package com.webshop.controller;
 import com.webshop.view.MainFrame;
 import com.webshop.view.ToolBarEvent;
 import com.webshop.view.ToolBarListener;
+import com.webshop.view.HomePanelEvent;
+import com.webshop.view.HomePanelListener;
 
 /**
  * Main controller for the WebShop application following MVC pattern
- * Handles navigation events from the toolbar and coordinates between View and Model
+ * Handles navigation events from the toolbar and home panel interactions
  */
-public class MainController implements ToolBarListener {
+public class MainController implements ToolBarListener, HomePanelListener {
     
     private MainFrame mainFrame;
     
@@ -86,6 +88,68 @@ public class MainController implements ToolBarListener {
         if (mainFrame != null) {
             mainFrame.showContactPanel();
         }
+    }
+    
+    // HomePanelListener implementation
+    
+    @Override
+    public void onHomePanelAction(HomePanelEvent event) {
+        System.out.println("HomePanelEvent received: " + event);
+        
+        switch (event.getAction()) {
+            case SEARCH_PRODUCTS:
+                onSearchProducts(event.getData());
+                break;
+            case CATEGORY_SELECTED:
+                onCategorySelected(event.getData());
+                break;
+            case ADD_TO_CART:
+                onAddToCart(event.getData());
+                break;
+            case PROCEED_TO_CHECKOUT:
+                onProceedToCheckout();
+                break;
+            case PRODUCT_SELECTED:
+                onProductSelected(event.getData());
+                break;
+            default:
+                System.out.println("Unknown home panel action: " + event.getAction());
+        }
+    }
+    
+    @Override
+    public void onSearchProducts(String searchText) {
+        System.out.println("Search initiated for: '" + searchText + "'");
+        showMessage("Searching for: " + searchText);
+        // TODO: Implement product search logic
+    }
+    
+    @Override
+    public void onCategorySelected(String categoryName) {
+        System.out.println("Category selected: " + categoryName);
+        showMessage("Category: " + categoryName);
+        // TODO: Implement category filtering logic
+    }
+    
+    @Override
+    public void onAddToCart(String productId) {
+        System.out.println("Adding to cart: " + productId);
+        showMessage("Added " + productId + " to cart");
+        // TODO: Implement add to cart logic
+    }
+    
+    @Override
+    public void onProceedToCheckout() {
+        System.out.println("Proceeding to checkout");
+        showMessage("Checkout initiated");
+        // TODO: Implement checkout logic
+    }
+    
+    @Override
+    public void onProductSelected(String productId) {
+        System.out.println("Product selected: " + productId);
+        showMessage("Viewing: " + productId);
+        // TODO: Implement product detail view
     }
     
     // Helper methods

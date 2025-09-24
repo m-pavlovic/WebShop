@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.webshop.Main",
+            "projectName": "webshop"
+        },
+        {
+            "type": "java",
+            "name": "Launch WebShop Main",
+            "request": "launch",
+            "mainClass": "com.webshop.Main",
+            "projectName": "WebShop",
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "projectName": "WebShop"
+        }
+    ]
+}

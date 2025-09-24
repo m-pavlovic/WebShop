@@ -1,7 +1,6 @@
 package com.webshop;
 
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import com.webshop.view.LoginFrame;
 import com.webshop.controller.LoginController;
 
@@ -14,13 +13,6 @@ public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    // Set system look and feel
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (Exception e) {
-                    System.err.println("Could not set system look and feel: " + e.getMessage());
-                }
-
                 // Start with login flow
                 LoginFrame loginFrame = new LoginFrame();
                 LoginController loginController = new LoginController(loginFrame);

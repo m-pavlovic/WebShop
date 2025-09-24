@@ -4,16 +4,21 @@ import com.webshop.view.LoginFrame;
 import com.webshop.view.LoginListener;
 import com.webshop.view.LoginEvent;
 import com.webshop.view.MainFrame;
+import com.webshop.view.RegistrationFrame;
+import com.webshop.view.RegistrationListener;
+import com.webshop.view.RegistrationData;
+import com.webshop.model.User;
 
 /**
- * Controller for handling login/authentication logic
- * Manages the flow between LoginFrame and MainFrame
+ * Controller for handling login/authentication logic and user registration
+ * Manages the flow between LoginFrame, RegistrationFrame, and MainFrame
  */
-public class LoginController implements LoginListener {
+public class LoginController implements LoginListener, RegistrationListener {
     
     private LoginFrame loginFrame;
     private MainFrame mainFrame;
     private MainController mainController;
+    private RegistrationFrame registrationFrame;
     
     /**
      * Constructor for LoginController
@@ -67,8 +72,7 @@ public class LoginController implements LoginListener {
      */
     private void handleRegister(LoginEvent event) {
         System.out.println("Registration requested at: " + event.getTimestamp());
-        // TODO: Show registration dialog or navigate to registration view
-        loginFrame.showSuccess("Registration feature coming soon!");
+        showRegistrationFrame();
     }
     
     /**
@@ -107,6 +111,83 @@ public class LoginController implements LoginListener {
         // loginFrame.dispose();
         
         System.out.println("Main application started for user: " + username);
+    }
+    
+    /**
+     * Simple password hashing method
+     * TODO: Replace with proper password hashing (BCrypt, PBKDF2, etc.)
+     * @param password The plain text password
+     * @return The hashed password
+     */
+    private String hashPassword(String password) {
+        // For demonstration purposes - DO NOT use in production!
+        // Use BCrypt, PBKDF2, or similar in real applications
+        return "hashed_" + password.hashCode();
+    }
+    
+    /**
+     * Shows the registration frame
+     */
+    private void showRegistrationFrame() {
+        if (registrationFrame == null) {
+            registrationFrame = new RegistrationFrame();
+            registrationFrame.setRegistrationListener(this);
+        }
+        registrationFrame.setVisible(true);
+        registrationFrame.clearForm();
+        registrationFrame.toFront();
+        System.out.println("Registration frame opened");
+    }
+    
+    /**
+     * Implementation of RegistrationListener interface
+     * Handles new user registration
+     */
+    @Override
+    public void onRegisterUser(RegistrationData registrationData) {
+        System.out.println("Processing registration for: " + registrationData.getUsername());
+        
+        if (!registrationData.isValid()) {
+            registrationFrame.showError("Please fill in all required fields");
+            return;
+        }
+        
+        try {
+            // Hash the password before storing
+            String hashedPassword = hashPassword(registrationData.getPassword());
+            
+            // Create new user
+            User newUser = new User(
+                    registrationData.getUsername(),
+                    hashedPassword,
+                    registrationData.getEmail(),
+                    registrationData.getFullName()
+            );
+            
+            // TODO: Save user to database/service
+            System.out.println("User created successfully: " + newUser.getUsername());
+            
+            registrationFrame.showSuccess("Account created successfully! You can now log in.");
+            registrationFrame.dispose();
+            registrationFrame = null;
+            
+        } catch (Exception e) {
+            System.err.println("Registration failed: " + e.getMessage());
+            registrationFrame.showError("Registration failed: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Implementation of RegistrationListener interface
+     * Handles registration cancellation
+     */
+    @Override
+    public void onCancelRegistration() {
+        System.out.println("Registration cancelled");
+        if (registrationFrame != null) {
+            registrationFrame.dispose();
+            registrationFrame = null;
+        }
     }
     
     /**
